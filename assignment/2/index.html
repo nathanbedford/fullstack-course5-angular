@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="../../vendor/bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="app.css">
 </head>
+
 <body>
   <div class="container">
     <h1>Shopping List Check Off</h1>
@@ -18,9 +19,14 @@
         <h2>To Buy:</h2>
         <ul>
           <li ng-repeat="item in toBuy.list">{{item.description}}
-              <button class="btn btn-default" ng-click="toBuy.buyItem(item)"><span class="glyphicon glyphicon-ok"></span> Bought</button>
+            <button class="btn btn-default" ng-click="toBuy.buyItem(item)"><span class="glyphicon glyphicon-ok"></span> Bought</button>
           </li>
         </ul>
+        <form class="form-inline add-new-section" ng-submit="toBuy.addNewItem(toBuy.newQty, toBuy.newName)">
+           <input type="text" style="width: 60px" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Qty" ng-model="toBuy.newQty">
+           <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Name" ng-model="toBuy.newName">
+           <input type="submit" class="btn btn-default" value="Add"></input>
+        </form>
         <div ng-if="!toBuy.list.length" class="emptyMessage">Everything is bought!</div>
       </div>
 
@@ -29,7 +35,7 @@
         <h2>Already Bought:</h2>
         <ul>
           <li ng-repeat="item in bought.list">
-            {{item.description}} 
+            {{item.description}}
           </li>
         </ul>
         <div ng-if="!bought.list.length" class="emptyMessage">Nothing bought yet.</div>

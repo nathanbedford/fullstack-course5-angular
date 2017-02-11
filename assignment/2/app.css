@@ -25,3 +25,8 @@ li > button {
 button > span {
     color: green;
 }
+
+.add-new-section{
+    border-top: 1px solid gray;
+    padding: 20px 0;
+}

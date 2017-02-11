@@ -22,6 +22,14 @@
             ShoppingListCheckOffService.boughtList.push(item);
 
         };
+
+        toBuy.addNewItem = function(qty, name){
+            if(qty && name){
+                toBuy.list.push(new Item(qty, name));
+                toBuy.newQty = "";
+                toBuy.newName = "";
+            }
+        };
     }
 
     BoughtListController.$inject = ['ShoppingListCheckOffService'];
@@ -43,11 +51,11 @@
             service.toBuyList = [];
 
             starterList = [];
-            starterList.push(new Item('cookies', '10'));
-            starterList.push(new Item('bananas', '2 bunches'));
-            starterList.push(new Item('milk', '1 gallon'));
-            starterList.push(new Item('eggs', '3 dozen'));
-            starterList.push(new Item('butter', '1 pound'));
+            starterList.push(new Item('10', 'cookies'));
+            starterList.push(new Item('2 bunches', 'bananas'));
+            starterList.push(new Item('1 gallon', 'milk'));
+            starterList.push(new Item('3 dozen', 'eggs'));
+            starterList.push(new Item('1 pound', 'butter'));
 
             starterList.forEach(function (item) {
                 service.toBuyList.push(item);
@@ -58,9 +66,9 @@
     }
 
     // Item class
-    function Item(name, quantity) {
-        this.name = name;
+    function Item(quantity, name) {
         this.quantity = quantity;
+        this.name = name;
     }
 
     Item.prototype = {
