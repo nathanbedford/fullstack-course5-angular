@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" ng-app="ShoppingListCheckOff" ng-cloak>
+
+<head>
+  <title>Shopping List Check Off</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../vendor/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Shopping List Check Off</h1>
+
+    <div class="row">
+
+      <!-- To Buy List -->
+      <div class="col-md-6" ng-controller="ToBuyListController as toBuy">
+        <h2>To Buy:</h2>
+        <ul>
+          <li ng-repeat="item in toBuy.list">{{item.quantity}} {{item.name}}
+              <button class="btn btn-default" ng-click="toBuy.buyItem(item)"><span class="glyphicon glyphicon-ok"></span> Bought</button>
+          </li>
+        </ul>
+        <div ng-if="!toBuy.list.length" class="emptyMessage">Everything is bought!</div>
+      </div>
+
+      <!-- Already Bought List -->
+      <div class="col-md-6" ng-controller="BoughtListController as bought">
+        <h2>Already Bought:</h2>
+        <ul>
+          <li ng-repeat="item in bought.list">
+            {{item.quantity}} {{item.name}}
+          </li>
+        </ul>
+        <div ng-if="!bought.list.length" class="emptyMessage">Nothing bought yet.</div>
+      </div>
+    </div>
+  </div>
+  <script src="../../vendor/angular/angular.js"></script>
+  <script src="app.js">
+  </script
+</body>
+</html>
