@@ -12,15 +12,7 @@
         toBuy.list = ShoppingListCheckOffService.toBuyList;
 
         toBuy.buyItem = function (item) {
-            // find item
-            var indexOfItem = toBuy.list.indexOf(item);
-
-            // remove it from 'toBuy' list
-            toBuy.list.splice(indexOfItem, 1);
-
-            // add item to the 'bought' list
-            ShoppingListCheckOffService.boughtList.push(item);
-
+            ShoppingListCheckOffService.moveItemToBoughtList(item);
         };
 
         toBuy.addNewItem = function(qty, name){
@@ -62,7 +54,16 @@
             });
         }
 
-        console.log(service.toBuyList);
+        service.moveItemToBoughtList = function(item){
+            // find item
+            var indexOfItem = service.toBuyList.indexOf(item);
+
+            // remove it from 'toBuy' list
+            service.toBuyList.splice(indexOfItem, 1);
+
+            // add item to the 'bought' list
+            service.boughtList.push(item);
+        };
     }
 
     // Item class
